@@ -1,0 +1,633 @@
+[
+  {
+    "inputs": [],
+    "stateMutability": "nonpayable",
+    "type": "constructor"
+  },
+  {
+    "inputs": [],
+    "name": "CarmelErrorAccountAlreadyExists",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "CarmelErrorAccountDoesNotExist",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "CarmelErrorAccountInvalidKeyId",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "CarmelErrorCannotWithdrawInsufficientFunds",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "CarmelErrorCannotWithdrawZeroAmount",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "CarmelErrorPermissionsAdminLevelRequired",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "CarmelErrorPermissionsSentinelLevelRequired",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "CarmelErrorUnauthorizedAccount",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "InvalidInitialization",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "NotInitializing",
+    "type": "error"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "uint64",
+        "name": "version",
+        "type": "uint64"
+      }
+    ],
+    "name": "Initialized",
+    "type": "event"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "addr",
+        "type": "address"
+      },
+      {
+        "components": [
+          {
+            "internalType": "uint256",
+            "name": "keyId",
+            "type": "uint256"
+          },
+          {
+            "internalType": "bytes32",
+            "name": "username",
+            "type": "bytes32"
+          },
+          {
+            "internalType": "bytes32",
+            "name": "message",
+            "type": "bytes32"
+          },
+          {
+            "internalType": "bytes",
+            "name": "signature",
+            "type": "bytes"
+          }
+        ],
+        "internalType": "struct CarmelBase.CarmelFingerprint",
+        "name": "fingerprint",
+        "type": "tuple"
+      }
+    ],
+    "name": "accountAddAddress",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "bytes32",
+        "name": "x",
+        "type": "bytes32"
+      },
+      {
+        "internalType": "bytes32",
+        "name": "y",
+        "type": "bytes32"
+      },
+      {
+        "components": [
+          {
+            "internalType": "uint256",
+            "name": "keyId",
+            "type": "uint256"
+          },
+          {
+            "internalType": "bytes32",
+            "name": "username",
+            "type": "bytes32"
+          },
+          {
+            "internalType": "bytes32",
+            "name": "message",
+            "type": "bytes32"
+          },
+          {
+            "internalType": "bytes",
+            "name": "signature",
+            "type": "bytes"
+          }
+        ],
+        "internalType": "struct CarmelBase.CarmelFingerprint",
+        "name": "fingerprint",
+        "type": "tuple"
+      }
+    ],
+    "name": "accountAddKey",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "components": [
+          {
+            "internalType": "uint256",
+            "name": "keyId",
+            "type": "uint256"
+          },
+          {
+            "internalType": "bytes32",
+            "name": "username",
+            "type": "bytes32"
+          },
+          {
+            "internalType": "bytes32",
+            "name": "message",
+            "type": "bytes32"
+          },
+          {
+            "internalType": "bytes",
+            "name": "signature",
+            "type": "bytes"
+          }
+        ],
+        "internalType": "struct CarmelBase.CarmelFingerprint",
+        "name": "fingerprint",
+        "type": "tuple"
+      }
+    ],
+    "name": "accountGetKeys",
+    "outputs": [
+      {
+        "internalType": "bytes32[]",
+        "name": "",
+        "type": "bytes32[]"
+      },
+      {
+        "internalType": "bytes32[]",
+        "name": "",
+        "type": "bytes32[]"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "bytes32",
+        "name": "m0",
+        "type": "bytes32"
+      },
+      {
+        "internalType": "bytes32",
+        "name": "m1",
+        "type": "bytes32"
+      },
+      {
+        "components": [
+          {
+            "internalType": "uint256",
+            "name": "keyId",
+            "type": "uint256"
+          },
+          {
+            "internalType": "bytes32",
+            "name": "username",
+            "type": "bytes32"
+          },
+          {
+            "internalType": "bytes32",
+            "name": "message",
+            "type": "bytes32"
+          },
+          {
+            "internalType": "bytes",
+            "name": "signature",
+            "type": "bytes"
+          }
+        ],
+        "internalType": "struct CarmelBase.CarmelFingerprint",
+        "name": "fingerprint",
+        "type": "tuple"
+      }
+    ],
+    "name": "accountUpdateHash",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "bytes32",
+        "name": "username",
+        "type": "bytes32"
+      }
+    ],
+    "name": "getAccount",
+    "outputs": [
+      {
+        "components": [
+          {
+            "internalType": "uint256",
+            "name": "id",
+            "type": "uint256"
+          },
+          {
+            "internalType": "bytes32",
+            "name": "username",
+            "type": "bytes32"
+          },
+          {
+            "internalType": "bytes32",
+            "name": "group",
+            "type": "bytes32"
+          },
+          {
+            "internalType": "uint32",
+            "name": "total_keys",
+            "type": "uint32"
+          },
+          {
+            "internalType": "uint32",
+            "name": "total_addresses",
+            "type": "uint32"
+          }
+        ],
+        "internalType": "struct CarmelBase.CarmelAccount",
+        "name": "",
+        "type": "tuple"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "bytes32",
+        "name": "username",
+        "type": "bytes32"
+      }
+    ],
+    "name": "getAccountHashes",
+    "outputs": [
+      {
+        "internalType": "bytes32[]",
+        "name": "",
+        "type": "bytes32[]"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "bytes32",
+        "name": "grp",
+        "type": "bytes32"
+      }
+    ],
+    "name": "getAccounts",
+    "outputs": [
+      {
+        "components": [
+          {
+            "internalType": "uint256",
+            "name": "id",
+            "type": "uint256"
+          },
+          {
+            "internalType": "bytes32",
+            "name": "username",
+            "type": "bytes32"
+          },
+          {
+            "internalType": "bytes32",
+            "name": "group",
+            "type": "bytes32"
+          },
+          {
+            "internalType": "uint32",
+            "name": "total_keys",
+            "type": "uint32"
+          },
+          {
+            "internalType": "uint32",
+            "name": "total_addresses",
+            "type": "uint32"
+          }
+        ],
+        "internalType": "struct CarmelBase.CarmelAccount[]",
+        "name": "",
+        "type": "tuple[]"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "bytes32",
+        "name": "username",
+        "type": "bytes32"
+      }
+    ],
+    "name": "getAddresses",
+    "outputs": [
+      {
+        "internalType": "address[]",
+        "name": "",
+        "type": "address[]"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "addr",
+        "type": "address"
+      }
+    ],
+    "name": "getPerms",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "getTotalAccounts",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "sender",
+        "type": "address"
+      },
+      {
+        "internalType": "address",
+        "name": "ver",
+        "type": "address"
+      }
+    ],
+    "name": "initialize",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "bytes32",
+        "name": "username",
+        "type": "bytes32"
+      },
+      {
+        "internalType": "bytes32",
+        "name": "grp",
+        "type": "bytes32"
+      },
+      {
+        "internalType": "address",
+        "name": "addr",
+        "type": "address"
+      },
+      {
+        "internalType": "bytes32",
+        "name": "x",
+        "type": "bytes32"
+      },
+      {
+        "internalType": "bytes32",
+        "name": "y",
+        "type": "bytes32"
+      }
+    ],
+    "name": "register",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "addr",
+        "type": "address"
+      },
+      {
+        "internalType": "uint8",
+        "name": "level",
+        "type": "uint8"
+      }
+    ],
+    "name": "updatePerms",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "bytes32",
+        "name": "username",
+        "type": "bytes32"
+      },
+      {
+        "internalType": "bytes32",
+        "name": "m0",
+        "type": "bytes32"
+      },
+      {
+        "internalType": "bytes32",
+        "name": "m1",
+        "type": "bytes32"
+      }
+    ],
+    "name": "updateSystemHash",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "components": [
+          {
+            "internalType": "uint256",
+            "name": "keyId",
+            "type": "uint256"
+          },
+          {
+            "internalType": "bytes32",
+            "name": "username",
+            "type": "bytes32"
+          },
+          {
+            "internalType": "bytes32",
+            "name": "message",
+            "type": "bytes32"
+          },
+          {
+            "internalType": "bytes",
+            "name": "signature",
+            "type": "bytes"
+          }
+        ],
+        "internalType": "struct CarmelBase.CarmelFingerprint",
+        "name": "fingerprint",
+        "type": "tuple"
+      }
+    ],
+    "name": "verify",
+    "outputs": [
+      {
+        "internalType": "bool",
+        "name": "",
+        "type": "bool"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "components": [
+          {
+            "internalType": "uint256",
+            "name": "id",
+            "type": "uint256"
+          },
+          {
+            "internalType": "bytes32",
+            "name": "username",
+            "type": "bytes32"
+          },
+          {
+            "internalType": "bytes32",
+            "name": "group",
+            "type": "bytes32"
+          },
+          {
+            "internalType": "uint32",
+            "name": "total_keys",
+            "type": "uint32"
+          },
+          {
+            "internalType": "uint32",
+            "name": "total_addresses",
+            "type": "uint32"
+          }
+        ],
+        "internalType": "struct CarmelBase.CarmelAccount",
+        "name": "account",
+        "type": "tuple"
+      },
+      {
+        "components": [
+          {
+            "internalType": "uint256",
+            "name": "keyId",
+            "type": "uint256"
+          },
+          {
+            "internalType": "bytes32",
+            "name": "username",
+            "type": "bytes32"
+          },
+          {
+            "internalType": "bytes32",
+            "name": "message",
+            "type": "bytes32"
+          },
+          {
+            "internalType": "bytes",
+            "name": "signature",
+            "type": "bytes"
+          }
+        ],
+        "internalType": "struct CarmelBase.CarmelFingerprint",
+        "name": "fingerprint",
+        "type": "tuple"
+      }
+    ],
+    "name": "verifyFingerprint",
+    "outputs": [
+      {
+        "internalType": "bool",
+        "name": "",
+        "type": "bool"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "version",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "pure",
+    "type": "function"
+  }
+]
