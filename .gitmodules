@@ -1,0 +1,6 @@
+[submodule "lib/crypto-lib"]
+	path = lib/crypto-lib
+	url = https://github.com/get-smooth/crypto-lib.git
+[submodule "lib/openzeppelin-community-contracts"]
+	path = lib/openzeppelin-community-contracts
+	url = https://github.com/OpenZeppelin/openzeppelin-community-contracts

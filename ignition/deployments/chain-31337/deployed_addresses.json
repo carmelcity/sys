@@ -1,0 +1,10 @@
+{
+  "CarmelVerifierProxyModule#CarmelVerifier": "0x5FbDB2315678afecb367f032d93F642f64180aa3",
+  "CarmelVerifierProxyModule#TransparentUpgradeableProxy": "0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512",
+  "CarmelVerifierProxyModule#ProxyAdmin": "0xCafac3dD18aC6c6e92c921884f9E4176737C052c",
+  "CarmelVerifierModule#CarmelVerifier": "0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512",
+  "CarmelRegistryProxyModule#CarmelRegistry": "0x9fE46736679d2D9a65F0992F2272dE9f3c7fa6e0",
+  "CarmelRegistryProxyModule#TransparentUpgradeableProxy": "0xCf7Ed3AccA5a467e9e704C703E8D87F634fB0Fc9",
+  "CarmelRegistryProxyModule#ProxyAdmin": "0xd8058efe0198ae9dD7D563e1b4938Dcbc86A1F81",
+  "CarmelRegistryModule#CarmelRegistry": "0xCf7Ed3AccA5a467e9e704C703E8D87F634fB0Fc9"
+}

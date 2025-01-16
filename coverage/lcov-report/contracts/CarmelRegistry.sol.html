@@ -1,0 +1,920 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for contracts/CarmelRegistry.sol</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../prettify.css" />
+    <link rel="stylesheet" href="../base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="../index.html">all files</a> / <a href="index.html">contracts/</a> CarmelRegistry.sol
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">100% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>51/51</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">100% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>36/36</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">100% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>20/20</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">100% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>67/67</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line high'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+204
+205
+206
+207
+208
+209
+210
+211
+212
+213
+214
+215
+216
+217
+218
+219
+220
+221
+222
+223
+224
+225
+226
+227
+228
+229
+230
+231
+232
+233
+234
+235
+236
+237
+238
+239
+240
+241
+242
+243
+244
+245
+246
+247
+248
+249
+250
+251
+252
+253
+254
+255
+256
+257
+258
+259
+260
+261
+262
+263
+264
+265
+266
+267
+268
+269
+270
+271
+272
+273
+274
+275
+276
+277
+278
+279
+280
+281
+282
+283
+284
+285
+286</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">32×</span>
+<span class="cline-any cline-yes">27×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">244×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">244×</span>
+<span class="cline-any cline-yes">244×</span>
+<span class="cline-any cline-yes">244×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">17×</span>
+<span class="cline-any cline-yes">17×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">16×</span>
+<span class="cline-any cline-yes">16×</span>
+<span class="cline-any cline-yes">16×</span>
+<span class="cline-any cline-yes">16×</span>
+<span class="cline-any cline-yes">16×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">16×</span>
+<span class="cline-any cline-yes">16×</span>
+<span class="cline-any cline-yes">16×</span>
+<span class="cline-any cline-yes">16×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">16×</span>
+<span class="cline-any cline-yes">16×</span>
+<span class="cline-any cline-yes">16×</span>
+<span class="cline-any cline-yes">16×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">16×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">6×</span>
+<span class="cline-any cline-yes">6×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">17×</span>
+<span class="cline-any cline-yes">13×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">12×</span>
+<span class="cline-any cline-yes">12×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">12×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js"> /***********************************************************************************************************\
+ *   ______     ___      .______      .___  ___.  _______  __          ______  __  .___________.____    ____ *
+ *  /      |   /   \     |   _  \     |   \/   | |   ____||  |        /      ||  | |           |\   \  /   / *
+ * |  ,----'  /  ^  \    |  |_)  |    |  \  /  | |  |__   |  |       |  ,----'|  | `---|  |----` \   \/   /  *
+ * |  |      /  /_\  \   |      /     |  |\/|  | |   __|  |  |       |  |     |  |     |  |       \_    _/   *
+ * |  `----./  _____  \  |  |\  \----.|  |  |  | |  |____ |  `----.__|  `----.|  |     |  |         |  |     *
+ *  \______/__/     \__\ | _| `._____||__|  |__| |_______||_______(__)\______||__|     |__|         |__|     *
+ *                                                                                                           *
+ *  Copyright (C) 2025 - I. Dan Calinescu                                                                    *
+ *  License: This code is licensed under MIT License (see LICENSE for details)                               *
+ *                                                                                                           *
+ *  CarmelRegistry.sol                                                                                        *  
+ *                                                                                                           *                                                                                                       *
+ *  This code is part of the Carmel City platform (https://carmel.city) and open sourced at:                 *
+ *  https://github.com/carmelcity                                                                            *
+ *                                                                                                           * 
+ \***********************************************************************************************************/                                                                                                          
+&nbsp;
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.28;
+&nbsp;
+import "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol";
+import "./CarmelBase.sol";
+&nbsp;
+interface ICarmelVerifier {
+    function verify(bytes32 digest, bytes calldata signature, bytes32 x, bytes32 y) external view returns (bool);
+}
+&nbsp;
+/// @title The Carmel Registry
+/// @author I. Dan Calinescu
+/// @notice This keeps track of all Carmel Accounts and associated data such as public keys
+/// @custom:oz-upgrades-unsafe-allow external-library-linking
+contract CarmelRegistry is Initializable, CarmelBase {
+&nbsp;
+    /// @dev Constants used to track permissions
+    uint8 constant private ADMIN_PERM = 99;
+    uint8 constant private SENTINEL_PERM = 50;
+    uint8 constant private START_PERM = 1;
+&nbsp;
+    /// @dev Admin-owned permissions
+    mapping(address =&gt; uint8) private _perms;
+&nbsp;
+    /// @dev The Carmel Verifier used to verify signatures
+    ICarmelVerifier private _verifier;
+&nbsp;
+    /// @notice The total accounts available in this registry
+    uint256 private _total_accounts;
+&nbsp;
+    /// @dev Keep track of the main owner of this registry
+    address private _owner;
+&nbsp;
+    /// @dev Keep track of account public keys
+    mapping(bytes32 =&gt; bytes32[]) private _keys_x;
+    mapping(bytes32 =&gt; bytes32[]) private _keys_y;
+&nbsp;
+    /// @dev Store account IPFS hashes
+    mapping(bytes32 =&gt; bytes32[]) private _hashes;
+&nbsp;
+    /// @dev A list of all registered Carmel Accounts
+    mapping(bytes32 =&gt; CarmelAccount) private _accounts;
+&nbsp;
+    /// @dev Index usernames by group
+    mapping(bytes32 =&gt; bytes32[]) private _usernames;
+&nbsp;
+    /// @dev A list of all tracked address for each account, by username
+    mapping(bytes32 =&gt; address[]) private _addresses;
+&nbsp;
+    /// @notice Helper to ensure sentinel permissions on a function
+    modifier requireSentinel() {
+      if(_perms[msg.sender] &lt; SENTINEL_PERM) revert CarmelErrorPermissionsSentinelLevelRequired();
+      _;
+    } 
+    
+    /// @notice Helper to ensure admin permissions on a function
+    modifier requireAdmin() {
+      if(_perms[msg.sender] &lt; ADMIN_PERM) revert CarmelErrorPermissionsAdminLevelRequired();
+      _;
+    }
+&nbsp;
+    /// @custom:oz-upgrades-unsafe-allow constructor
+    constructor() {
+        _disableInitializers();
+    }
+&nbsp;
+    /// @dev called only once at deployment
+    function initialize(
+        address sender,
+        address ver
+    ) initializer public {
+        _perms[sender] = ADMIN_PERM;
+        _owner = sender;
+        _verifier = ICarmelVerifier(ver);
+    }
+&nbsp;
+    /***********************************************************************\
+    *                 _             _                                       *
+    *       __ _   __| | _ __ ___  (_) _ __     __ _  _ __  ___   __ _      *
+    *      / _` | / _` || '_ ` _ \ | || '_ \   / _` || '__|/ _ \ / _` |     *
+    *     | (_| || (_| || | | | | || || | | | | (_| || |  |  __/| (_| |     *
+    *      \__,_| \__,_||_| |_| |_||_||_| |_|  \__,_||_|   \___| \__,_|     *
+    \***********************************************************************/
+&nbsp;
+    /// @notice
+    function updatePerms (address addr, uint8 level) public requireAdmin {
+        _perms[addr] = level;
+    }
+&nbsp;
+    /************************************************************************\
+    *                     _    _               _                             *
+    *   ___   ___  _ __  | |_ (_) _ __    ___ | |   __ _  _ __  ___   __ _   *
+    *  / __| / _ \| '_ \ | __|| || '_ \  / _ \| |  / _` || '__|/ _ \ / _` |  *
+    *  \__ \|  __/| | | || |_ | || | | ||  __/| | | (_| || |  |  __/| (_| |  *
+    *  |___/ \___||_| |_| \__||_||_| |_| \___||_|  \__,_||_|   \___| \__,_|  *
+    \************************************************************************/
+&nbsp;
+    /// @notice Register a brand new Carmel account into this registry
+    /// @param username The Carmel username (must be unique)
+    /// @param grp The Carmel group to which this username will be added (ex: "users")
+    /// @param addr The address associated with this account
+    /// @param x The x coordinate of the key
+    /// @param y The y coordinate of the key
+    function register (bytes32 username, bytes32 grp, address addr, bytes32 x, bytes32 y) public requireSentinel returns (uint256) {
+        CarmelAccount memory account = _accounts[username];
+        if(account.username &gt; bytes32(0)) revert CarmelErrorAccountAlreadyExists();
+        
+        uint256 accountId = _total_accounts;
+        _total_accounts = _total_accounts + 1;
+        _keys_x[username].push(x);
+        _keys_y[username].push(y);
+        _accounts[username].total_keys = 1;
+&nbsp;
+        _hashes[username].push(bytes32(0));
+        _hashes[username].push(bytes32(0));
+        _hashes[username].push(bytes32(0));
+        _hashes[username].push(bytes32(0));
+&nbsp;
+        CarmelAccount memory acct = CarmelAccount({ id: accountId, group: grp, username: username, total_keys: 0, total_addresses:1 });
+        _accounts[username] = acct;
+        _addresses[username].push(addr);
+        _usernames[grp].push(username);
+&nbsp;
+        return accountId;
+    }
+   
+    /// @notice Update an account's system hash
+    /// @param username The account username
+    /// @param m0 The first part of the hash
+    /// @param m1 The second part of the hash
+    function updateSystemHash (bytes32 username,  bytes32 m0, bytes32 m1) public requireSentinel {
+        CarmelAccount memory account = _accounts[username];
+        if(account.username == bytes32(0)) revert CarmelErrorAccountDoesNotExist();
+    
+        _hashes[username][0] = m0;
+        _hashes[username][1] = m1;
+    }
+&nbsp;
+    /*******************************************************************************\
+    *                                            _                                  *
+    *       __ _   ___  ___  ___   _   _  _ __  | |_    __ _  _ __  ___   __ _      *
+    *      / _` | / __|/ __|/ _ \ | | | || '_ \ | __|  / _` || '__|/ _ \ / _` |     *
+    *     | (_| || (__| (__| (_) || |_| || | | || |_  | (_| || |  |  __/| (_| |     *
+    *      \__,_| \___|\___|\___/  \__,_||_| |_| \__|  \__,_||_|   \___| \__,_|     *
+    \*******************************************************************************/
+&nbsp;
+    /// @notice
+    function accountGetKeys (CarmelFingerprint calldata fingerprint) public view returns (bytes32[] memory, bytes32[] memory) {
+        CarmelAccount memory account = _accounts[fingerprint.username];
+        if(!verifyFingerprint(account, fingerprint)) revert CarmelErrorUnauthorizedAccount();
+       
+        return  (_keys_x[fingerprint.username], _keys_y[fingerprint.username]);
+    }
+&nbsp;
+    /// @notice 
+    function accountAddAddress(address addr, CarmelFingerprint calldata fingerprint) public requireSentinel {
+        CarmelAccount memory account = _accounts[fingerprint.username];
+        if(!verifyFingerprint(account, fingerprint)) revert CarmelErrorUnauthorizedAccount();
+        
+        _addresses[fingerprint.username].push(addr);
+        _accounts[fingerprint.username].total_addresses = account.total_addresses + 1;
+    }
+&nbsp;
+    /// @notice Add a new public key associated with an account
+    /// @param x The x coordinate of the key
+    /// @param y The y coordinate of the key
+    /// @param fingerprint The account fingerprint
+    function accountAddKey (bytes32 x, bytes32 y, CarmelFingerprint calldata fingerprint) public requireSentinel {
+        CarmelAccount memory account = _accounts[fingerprint.username];
+        if(!verifyFingerprint(account, fingerprint)) revert CarmelErrorUnauthorizedAccount();
+        
+        _keys_x[fingerprint.username].push(x);
+        _keys_y[fingerprint.username].push(y);
+        _accounts[fingerprint.username].total_keys = account.total_keys + 1;
+    }
+&nbsp;
+    /// @notice Update an account's personal hash
+    /// @param m0 The first part of the hash
+    /// @param m1 The second part of the hash
+    /// @param fingerprint The account fingerprint
+    function accountUpdateHash (bytes32 m0, bytes32 m1, CarmelFingerprint calldata fingerprint) public requireSentinel {
+        CarmelAccount memory account = _accounts[fingerprint.username];
+        if(!verifyFingerprint(account, fingerprint)) revert CarmelErrorUnauthorizedAccount();
+&nbsp;
+        _hashes[fingerprint.username][2] = m0;
+        _hashes[fingerprint.username][3] = m1;
+    }
+&nbsp;
+    /*********************************************************************\
+    *                    _      _  _                                      *
+    *      _ __   _   _ | |__  | |(_)  ___    __ _  _ __  ___   __ _      *
+    *     | '_ \ | | | || '_ \ | || | / __|  / _` || '__|/ _ \ / _` |     *
+    *     | |_) || |_| || |_) || || || (__  | (_| || |  |  __/| (_| |     *
+    *     | .__/  \__,_||_.__/ |_||_| \___|  \__,_||_|   \___| \__,_|     *
+    *     |_|                                                             *
+    \*********************************************************************/
+&nbsp;
+    /// @notice
+    function getAddresses(bytes32 username) public view returns (address[] memory) {
+        CarmelAccount memory account = _accounts[username];
+        if(account.username == bytes32(0)) revert CarmelErrorAccountDoesNotExist();
+        
+        return _addresses[username];
+    }
+&nbsp;
+    /// @notice Verify a fingerprint
+    /// @param fingerprint The account fingerprint
+    /// @return True if the fingerprint is valid, false otherwise
+    function verify (CarmelFingerprint calldata fingerprint) public view returns(bool) {
+        CarmelAccount memory account = _accounts[fingerprint.username];
+        return verifyFingerprint(account, fingerprint);
+    }
+    
+    /// @notice
+    function version() public pure returns (uint256) {
+        return 1;
+    }
+&nbsp;
+    /// @notice
+    function getPerms (address addr) public view returns (uint256) {
+        return _perms[addr];
+    }
+&nbsp;
+    /// @notice
+    function getAccount (bytes32 username) public view returns (CarmelAccount memory) {
+        CarmelAccount memory account = _accounts[username];
+        return account;
+    }
+&nbsp;
+    /// @notice 
+    function getTotalAccounts() public view returns (uint256) {
+        return _total_accounts;
+    }
+&nbsp;
+    /// @notice
+    function getAccountHashes(bytes32 username) public view returns (bytes32[] memory) {
+        return _hashes[username];
+    }
+&nbsp;
+    /// @notice Get a list of all accounts within a particular group
+    /// @param grp The group to look up
+    /// @return All the accounts within the group
+    function getAccounts(bytes32 grp) public view returns (CarmelAccount[] memory) {
+        bytes32[] memory all = _usernames[grp];
+        uint total = all.length;
+        CarmelAccount[] memory accts = new CarmelAccount[](total);
+&nbsp;
+        for(uint i = 0; i &lt; total; i++) {
+            accts[i] = _accounts[all[i]];
+        }
+&nbsp;
+        return accts;
+    }
+&nbsp;
+    /// @notice Verify a fingerprint
+    /// @param account The owner account
+    /// @param fingerprint The account fingerprint
+    /// @return True if the fingerprint is valid, false otherwise
+    function verifyFingerprint (CarmelAccount memory account, CarmelFingerprint calldata fingerprint) public view returns(bool) {
+        if(account.username == bytes32(0)) { revert CarmelErrorAccountDoesNotExist(); }
+        if(_keys_x[fingerprint.username].length &lt;= fingerprint.keyId) revert CarmelErrorAccountInvalidKeyId();
+&nbsp;
+        bytes32 x = _keys_x[fingerprint.username][fingerprint.keyId];
+        bytes32 y = _keys_y[fingerprint.username][fingerprint.keyId];
+&nbsp;
+        return _verifier.verify(fingerprint.message, fingerprint.signature, x, y);
+    }
+}</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Thu Jan 16 2025 16:19:05 GMT+0100 (Central European Standard Time)
+</div>
+</div>
+<script src="../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../sorter.js"></script>
+</body>
+</html>

@@ -1,0 +1,51 @@
+{
+  "_format": "hh-sol-artifact-1",
+  "contractName": "CarmelBase",
+  "sourceName": "contracts/CarmelBase.sol",
+  "abi": [
+    {
+      "inputs": [],
+      "name": "CarmelErrorAccountAlreadyExists",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "CarmelErrorAccountDoesNotExist",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "CarmelErrorAccountInvalidKeyId",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "CarmelErrorCannotWithdrawInsufficientFunds",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "CarmelErrorCannotWithdrawZeroAmount",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "CarmelErrorPermissionsAdminLevelRequired",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "CarmelErrorPermissionsSentinelLevelRequired",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "CarmelErrorUnauthorizedAccount",
+      "type": "error"
+    }
+  ],
+  "bytecode": "0x",
+  "deployedBytecode": "0x",
+  "linkReferences": {},
+  "deployedLinkReferences": {}
+}
