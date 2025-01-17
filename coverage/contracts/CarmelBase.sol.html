@@ -22,22 +22,22 @@
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>0/0</span>
+        <span class='fraction'>2/2</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
         <span class="quiet">Branches</span>
-        <span class='fraction'>0/0</span>
+        <span class='fraction'>6/6</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>0/0</span>
+        <span class='fraction'>3/3</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>0/0</span>
+        <span class='fraction'>5/5</span>
       </div>
     </div>
   </div>
@@ -95,7 +95,46 @@
 50
 51
 52
-53</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -146,6 +185,45 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">72×</span>
+<span class="cline-any cline-yes">64×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js"> /***********************************************************************************************************\
  *   ______     ___      .______      .___  ___.  _______  __          ______  __  .___________.____    ____ *
@@ -182,6 +260,12 @@ abstract contract CarmelBase {
     error CarmelErrorUnauthorizedAccount();
     error CarmelErrorCannotWithdrawZeroAmount();
     error CarmelErrorCannotWithdrawInsufficientFunds();
+    error CarmelErrorAssetNotMinted();
+    error CarmelErrorAssetMintingUnauthorized();
+    error CarmelErrorAssetMintingInvalidQuantity();
+    error CarmelErrorAssetMintingMaxSupplyReached();
+    error CarmelErrorAssetMintingInvalidPrice();
+    error CarmelErrorAssetMintingInsufficientBalance();
 &nbsp;
     /// @notice This represents an individual Carmel Fingerprint
     struct CarmelFingerprint {
@@ -199,13 +283,46 @@ abstract contract CarmelBase {
         uint32 total_keys;
         uint32 total_addresses;
     }
+&nbsp;
+    /// @dev Constants used to track permissions
+    uint8 constant internal ADMIN_PERM = 99;
+    uint8 constant internal SENTINEL_PERM = 50;
+    uint8 constant internal START_PERM = 1;
+&nbsp;
+    /// @dev Admin-owned permissions
+    mapping(address =&gt; uint8) internal _perms;
+&nbsp;
+    /// @notice Helper to ensure sentinel permissions on a function
+    modifier requireSentinel() {
+      if(_perms[msg.sender] &lt; SENTINEL_PERM) revert CarmelErrorPermissionsSentinelLevelRequired();
+      _;
+    } 
+    
+    /// @notice Helper to ensure admin permissions on a function
+    modifier requireAdmin() {
+      if(_perms[msg.sender] &lt; ADMIN_PERM) revert CarmelErrorPermissionsAdminLevelRequired();
+      _;
+    }
+&nbsp;
+    /***********************************************************************\
+    *                 _             _                                       *
+    *       __ _   __| | _ __ ___  (_) _ __     __ _  _ __  ___   __ _      *
+    *      / _` | / _` || '_ ` _ \ | || '_ \   / _` || '__|/ _ \ / _` |     *
+    *     | (_| || (_| || | | | | || || | | | | (_| || |  |  __/| (_| |     *
+    *      \__,_| \__,_||_| |_| |_||_||_| |_|  \__,_||_|   \___| \__,_|     *
+    \***********************************************************************/
+&nbsp;
+    /// @notice
+    function updatePerms (address addr, uint8 level) public requireAdmin {
+        _perms[addr] = level;
+    }
 }</pre></td></tr>
 </table></pre>
 <div class='push'></div><!-- for sticky footer -->
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Thu Jan 16 2025 16:19:05 GMT+0100 (Central European Standard Time)
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Fri Jan 17 2025 10:43:21 GMT+0100 (Central European Standard Time)
 </div>
 </div>
 <script src="../prettify.js"></script>

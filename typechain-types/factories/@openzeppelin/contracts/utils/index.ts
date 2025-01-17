@@ -8,3 +8,4 @@ export { Create2__factory } from "./Create2__factory";
 export { Errors__factory } from "./Errors__factory";
 export { Packing__factory } from "./Packing__factory";
 export { ReentrancyGuard__factory } from "./ReentrancyGuard__factory";
+export { Strings__factory } from "./Strings__factory";

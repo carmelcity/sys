@@ -21,6 +21,36 @@
   },
   {
     "inputs": [],
+    "name": "CarmelErrorAssetMintingInsufficientBalance",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "CarmelErrorAssetMintingInvalidPrice",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "CarmelErrorAssetMintingInvalidQuantity",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "CarmelErrorAssetMintingMaxSupplyReached",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "CarmelErrorAssetMintingUnauthorized",
+    "type": "error"
+  },
+  {
+    "inputs": [],
+    "name": "CarmelErrorAssetNotMinted",
+    "type": "error"
+  },
+  {
+    "inputs": [],
     "name": "CarmelErrorCannotWithdrawInsufficientFunds",
     "type": "error"
   },

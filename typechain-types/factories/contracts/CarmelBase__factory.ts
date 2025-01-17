@@ -26,6 +26,36 @@ const _abi = [
   },
   {
     inputs: [],
+    name: "CarmelErrorAssetMintingInsufficientBalance",
+    type: "error",
+  },
+  {
+    inputs: [],
+    name: "CarmelErrorAssetMintingInvalidPrice",
+    type: "error",
+  },
+  {
+    inputs: [],
+    name: "CarmelErrorAssetMintingInvalidQuantity",
+    type: "error",
+  },
+  {
+    inputs: [],
+    name: "CarmelErrorAssetMintingMaxSupplyReached",
+    type: "error",
+  },
+  {
+    inputs: [],
+    name: "CarmelErrorAssetMintingUnauthorized",
+    type: "error",
+  },
+  {
+    inputs: [],
+    name: "CarmelErrorAssetNotMinted",
+    type: "error",
+  },
+  {
+    inputs: [],
     name: "CarmelErrorCannotWithdrawInsufficientFunds",
     type: "error",
   },
@@ -48,6 +78,24 @@ const _abi = [
     inputs: [],
     name: "CarmelErrorUnauthorizedAccount",
     type: "error",
+  },
+  {
+    inputs: [
+      {
+        internalType: "address",
+        name: "addr",
+        type: "address",
+      },
+      {
+        internalType: "uint8",
+        name: "level",
+        type: "uint8",
+      },
+    ],
+    name: "updatePerms",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function",
   },
 ] as const;
 

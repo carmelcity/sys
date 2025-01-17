@@ -36,7 +36,7 @@ describe("CarmelVerifier", function () {
     it("should be able to handle an invalid signature", async function () {
       const { digest, signature } = utils.makeDigestSignature(authenticatorDataBase64, clientDataJSONBase64, r, s)
       const xy = utils.makeKey(publicKeyBase64)
-      expect(await verifier.contract.verify(digest, utils.getBytes("0x"), xy[0], xy[0])).to.equal(false)
+      expect(await verifier.contract.verify(digest, utils.toUtf8Bytes("0x"), xy[0], xy[0])).to.equal(false)
     })
 
     it("should be able to handle an empty r coefficient", async function () {

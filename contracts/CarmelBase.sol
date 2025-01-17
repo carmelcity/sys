@@ -33,6 +33,12 @@ abstract contract CarmelBase {
     error CarmelErrorUnauthorizedAccount();
     error CarmelErrorCannotWithdrawZeroAmount();
     error CarmelErrorCannotWithdrawInsufficientFunds();
+    error CarmelErrorAssetNotMinted();
+    error CarmelErrorAssetMintingUnauthorized();
+    error CarmelErrorAssetMintingInvalidQuantity();
+    error CarmelErrorAssetMintingMaxSupplyReached();
+    error CarmelErrorAssetMintingInvalidPrice();
+    error CarmelErrorAssetMintingInsufficientBalance();
 
     /// @notice This represents an individual Carmel Fingerprint
     struct CarmelFingerprint {
@@ -49,5 +55,38 @@ abstract contract CarmelBase {
         bytes32 group;
         uint32 total_keys;
         uint32 total_addresses;
+    }
+
+    /// @dev Constants used to track permissions
+    uint8 constant internal ADMIN_PERM = 99;
+    uint8 constant internal SENTINEL_PERM = 50;
+    uint8 constant internal START_PERM = 1;
+
+    /// @dev Admin-owned permissions
+    mapping(address => uint8) internal _perms;
+
+    /// @notice Helper to ensure sentinel permissions on a function
+    modifier requireSentinel() {
+      if(_perms[msg.sender] < SENTINEL_PERM) revert CarmelErrorPermissionsSentinelLevelRequired();
+      _;
+    } 
+    
+    /// @notice Helper to ensure admin permissions on a function
+    modifier requireAdmin() {
+      if(_perms[msg.sender] < ADMIN_PERM) revert CarmelErrorPermissionsAdminLevelRequired();
+      _;
+    }
+
+    /***********************************************************************\
+    *                 _             _                                       *
+    *       __ _   __| | _ __ ___  (_) _ __     __ _  _ __  ___   __ _      *
+    *      / _` | / _` || '_ ` _ \ | || '_ \   / _` || '__|/ _ \ / _` |     *
+    *     | (_| || (_| || | | | | || || | | | | (_| || |  |  __/| (_| |     *
+    *      \__,_| \__,_||_| |_| |_||_||_| |_|  \__,_||_|   \___| \__,_|     *
+    \***********************************************************************/
+
+    /// @notice
+    function updatePerms (address addr, uint8 level) public requireAdmin {
+        _perms[addr] = level;
     }
 }

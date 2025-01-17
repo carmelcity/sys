@@ -2,12 +2,16 @@ import hre from "hardhat";
 import bs58 from 'bs58'
 
 const { ethers } = hre;
-const { getBytes, keccak256, sha256, solidityPacked, concat, decodeBase64 } = ethers;
+const { getBytes, keccak256, sha256, solidityPacked, concat } = ethers;
 
 export const b32enc = (s: string) => ethers.encodeBytes32String(s)
 export const b32dec = (s: string) => ethers.decodeBytes32String(s)
 export const toUtf8Bytes = ethers.toUtf8Bytes
-export { getBytes }
+export const b32idec = (s: string) => parseInt(s)
+export const b32ienc = (n: any) => {
+    const hex = BigInt(n).toString(16)
+    return `0x${'0'.repeat(64 - hex.length)}${hex}`
+}
 
 export async function run(driver: any) {
     await driver.catch((error: any) => {

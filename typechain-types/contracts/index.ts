@@ -4,6 +4,7 @@
 import type * as carmelRegistrySol from "./CarmelRegistry.sol";
 export type { carmelRegistrySol };
 export type { CarmelBase } from "./CarmelBase";
+export type { CarmelCollection } from "./CarmelCollection";
 export type { CarmelRegistryV2 } from "./CarmelRegistryV2";
 export type { CarmelTreasury } from "./CarmelTreasury";
 export type { CarmelVerifier } from "./CarmelVerifier";

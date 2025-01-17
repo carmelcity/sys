@@ -3,8 +3,12 @@
 /* eslint-disable */
 import type {
   BaseContract,
+  BigNumberish,
+  BytesLike,
   FunctionFragment,
+  Result,
   Interface,
+  AddressLike,
   ContractRunner,
   ContractMethod,
   Listener,
@@ -14,9 +18,22 @@ import type {
   TypedDeferredTopicFilter,
   TypedEventLog,
   TypedListener,
+  TypedContractMethod,
 } from "../common";
 
-export interface CarmelBaseInterface extends Interface {}
+export interface CarmelBaseInterface extends Interface {
+  getFunction(nameOrSignature: "updatePerms"): FunctionFragment;
+
+  encodeFunctionData(
+    functionFragment: "updatePerms",
+    values: [AddressLike, BigNumberish]
+  ): string;
+
+  decodeFunctionResult(
+    functionFragment: "updatePerms",
+    data: BytesLike
+  ): Result;
+}
 
 export interface CarmelBase extends BaseContract {
   connect(runner?: ContractRunner | null): CarmelBase;
@@ -61,9 +78,23 @@ export interface CarmelBase extends BaseContract {
     event?: TCEvent
   ): Promise<this>;
 
+  updatePerms: TypedContractMethod<
+    [addr: AddressLike, level: BigNumberish],
+    [void],
+    "nonpayable"
+  >;
+
   getFunction<T extends ContractMethod = ContractMethod>(
     key: string | FunctionFragment
   ): T;
+
+  getFunction(
+    nameOrSignature: "updatePerms"
+  ): TypedContractMethod<
+    [addr: AddressLike, level: BigNumberish],
+    [void],
+    "nonpayable"
+  >;
 
   filters: {};
 }

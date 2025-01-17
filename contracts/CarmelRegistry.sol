@@ -32,14 +32,6 @@ interface ICarmelVerifier {
 /// @custom:oz-upgrades-unsafe-allow external-library-linking
 contract CarmelRegistry is Initializable, CarmelBase {
 
-    /// @dev Constants used to track permissions
-    uint8 constant private ADMIN_PERM = 99;
-    uint8 constant private SENTINEL_PERM = 50;
-    uint8 constant private START_PERM = 1;
-
-    /// @dev Admin-owned permissions
-    mapping(address => uint8) private _perms;
-
     /// @dev The Carmel Verifier used to verify signatures
     ICarmelVerifier private _verifier;
 
@@ -65,18 +57,6 @@ contract CarmelRegistry is Initializable, CarmelBase {
     /// @dev A list of all tracked address for each account, by username
     mapping(bytes32 => address[]) private _addresses;
 
-    /// @notice Helper to ensure sentinel permissions on a function
-    modifier requireSentinel() {
-      if(_perms[msg.sender] < SENTINEL_PERM) revert CarmelErrorPermissionsSentinelLevelRequired();
-      _;
-    } 
-    
-    /// @notice Helper to ensure admin permissions on a function
-    modifier requireAdmin() {
-      if(_perms[msg.sender] < ADMIN_PERM) revert CarmelErrorPermissionsAdminLevelRequired();
-      _;
-    }
-
     /// @custom:oz-upgrades-unsafe-allow constructor
     constructor() {
         _disableInitializers();
@@ -90,19 +70,6 @@ contract CarmelRegistry is Initializable, CarmelBase {
         _perms[sender] = ADMIN_PERM;
         _owner = sender;
         _verifier = ICarmelVerifier(ver);
-    }
-
-    /***********************************************************************\
-    *                 _             _                                       *
-    *       __ _   __| | _ __ ___  (_) _ __     __ _  _ __  ___   __ _      *
-    *      / _` | / _` || '_ ` _ \ | || '_ \   / _` || '__|/ _ \ / _` |     *
-    *     | (_| || (_| || | | | | || || | | | | (_| || |  |  __/| (_| |     *
-    *      \__,_| \__,_||_| |_| |_||_||_| |_|  \__,_||_|   \___| \__,_|     *
-    \***********************************************************************/
-
-    /// @notice
-    function updatePerms (address addr, uint8 level) public requireAdmin {
-        _perms[addr] = level;
     }
 
     /************************************************************************\
