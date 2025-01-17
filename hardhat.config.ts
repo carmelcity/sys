@@ -38,8 +38,8 @@ const config: HardhatUserConfig = {
   },
   networks: {
     hardhat: {
-      gasPrice: 1500000000,
-      gas: 4100000,
+      // gasPrice: 1500000000,
+      // gas: 4100000,
       accounts: [
         {
           privateKey: process.env.ETH_LOCAL_PRIVATE_KEY!, 

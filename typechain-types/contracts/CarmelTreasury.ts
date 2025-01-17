@@ -41,7 +41,12 @@ export declare namespace CarmelBase {
 
 export interface CarmelTreasuryInterface extends Interface {
   getFunction(
-    nameOrSignature: "deposit" | "getBalance" | "initialize" | "withdraw"
+    nameOrSignature:
+      | "deposit"
+      | "getBalance"
+      | "initialize"
+      | "updatePerms"
+      | "withdraw"
   ): FunctionFragment;
 
   getEvent(
@@ -58,6 +63,10 @@ export interface CarmelTreasuryInterface extends Interface {
     values: [AddressLike, AddressLike]
   ): string;
   encodeFunctionData(
+    functionFragment: "updatePerms",
+    values: [AddressLike, BigNumberish]
+  ): string;
+  encodeFunctionData(
     functionFragment: "withdraw",
     values: [AddressLike, BigNumberish, CarmelBase.CarmelFingerprintStruct]
   ): string;
@@ -65,6 +74,10 @@ export interface CarmelTreasuryInterface extends Interface {
   decodeFunctionResult(functionFragment: "deposit", data: BytesLike): Result;
   decodeFunctionResult(functionFragment: "getBalance", data: BytesLike): Result;
   decodeFunctionResult(functionFragment: "initialize", data: BytesLike): Result;
+  decodeFunctionResult(
+    functionFragment: "updatePerms",
+    data: BytesLike
+  ): Result;
   decodeFunctionResult(functionFragment: "withdraw", data: BytesLike): Result;
 }
 
@@ -146,6 +159,12 @@ export interface CarmelTreasury extends BaseContract {
     "nonpayable"
   >;
 
+  updatePerms: TypedContractMethod<
+    [addr: AddressLike, level: BigNumberish],
+    [void],
+    "nonpayable"
+  >;
+
   withdraw: TypedContractMethod<
     [
       to: AddressLike,
@@ -170,6 +189,13 @@ export interface CarmelTreasury extends BaseContract {
     nameOrSignature: "initialize"
   ): TypedContractMethod<
     [sender: AddressLike, reg: AddressLike],
+    [void],
+    "nonpayable"
+  >;
+  getFunction(
+    nameOrSignature: "updatePerms"
+  ): TypedContractMethod<
+    [addr: AddressLike, level: BigNumberish],
     [void],
     "nonpayable"
   >;

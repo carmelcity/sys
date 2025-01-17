@@ -3,6 +3,7 @@
 /* eslint-disable */
 export * as carmelRegistrySol from "./CarmelRegistry.sol";
 export { CarmelBase__factory } from "./CarmelBase__factory";
+export { CarmelCollection__factory } from "./CarmelCollection__factory";
 export { CarmelRegistryV2__factory } from "./CarmelRegistryV2__factory";
 export { CarmelTreasury__factory } from "./CarmelTreasury__factory";
 export { CarmelVerifier__factory } from "./CarmelVerifier__factory";

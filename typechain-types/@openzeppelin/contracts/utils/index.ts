@@ -10,3 +10,4 @@ export type { Create2 } from "./Create2";
 export type { Errors } from "./Errors";
 export type { Packing } from "./Packing";
 export type { ReentrancyGuard } from "./ReentrancyGuard";
+export type { Strings } from "./Strings";

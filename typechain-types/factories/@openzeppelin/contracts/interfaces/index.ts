@@ -2,4 +2,5 @@
 /* tslint:disable */
 /* eslint-disable */
 export * as draftIerc4337Sol from "./draft-IERC4337.sol";
+export * as draftIerc6093Sol from "./draft-IERC6093.sol";
 export { IERC1967__factory } from "./IERC1967__factory";
